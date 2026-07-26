@@ -1,3 +1,5 @@
+
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
@@ -7,56 +9,39 @@ import LeadDetails from "./pages/LeadDetails";
 import Navbar from "./components/Navbar";
 import Admin from "./pages/Admin";
 import CreateLead from "./pages/CreateLead";
-import Footer from "./components/Footer"
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin"
-          element={
-            // <ProtectedRoute adminOnly={true}>
-              <Admin />
-            // </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/create-lead"
-          element={
-            // <ProtectedRoute>
-              <CreateLead />
-            // </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/leads"
-          element={
-            // <ProtectedRoute>
-              <Leads />
-            // </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/leads/:id"
-          element={
-            // <ProtectedRoute>
-              <LeadDetails />
-            // </ProtectedRoute>
-          }
-        />
-      </Routes>
-      <Footer/>
+      <div className="d-flex flex-column min-vh-100">
+        <Navbar />
+
+        <main className="flex-grow-1">
+          <Routes>
+            <Route path="/login" element={<Login />} />
+
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route path="/admin" element={<Admin />} />
+
+            <Route path="/create-lead" element={<CreateLead />} />
+
+            <Route path="/leads" element={<Leads />} />
+
+            <Route path="/leads/:id" element={<LeadDetails />} />
+          </Routes>
+        </main>
+
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }
