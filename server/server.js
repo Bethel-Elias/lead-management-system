@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 sequelize
   .authenticate()
   .then(() => {
-    console.log("MySQL Connected");
+    console.log("PostgreSQL Connected");
 
     return sequelize.sync({ alter: true });
   })
